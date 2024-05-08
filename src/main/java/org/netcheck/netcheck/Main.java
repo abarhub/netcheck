@@ -16,7 +16,9 @@ public class Main {
         ConfigService configService;
         configService = new ConfigService();
         Vertx vertx = Vertx.vertx();
+        LOGGER.info("deploiement MainVerticle");
         vertx.deployVerticle(new MainVerticle());
+        LOGGER.info("deploiement NetCheckVerticle");
         vertx.deployVerticle(new NetCheckVerticle(configService));
     }
 

@@ -41,15 +41,6 @@ public class NetCheckVerticle extends AbstractVerticle {
 
         long appNbMs;
 
-//        appNbMs = 1000;
-
-//        appNbMs = 10 * 1000;
-
-//        ConfigRetriever retriever = ConfigRetriever.create(vertx);
-
-        //retriever.getConfig().g
-
-
         configNetCheck = initConfig();
 
         appNbMs = configNetCheck.periodicite();
@@ -67,7 +58,7 @@ public class NetCheckVerticle extends AbstractVerticle {
             .setKeepAlive(false)
             .setLogActivity(true);
 //        options.setKeepAlive(false);
-        WebClient client = WebClient.create(vertx, options);
+        client = WebClient.create(vertx, options);
 
         vertx.setPeriodic(appNbMs, id -> {
             // This handler will get called every second
@@ -123,20 +114,8 @@ public class NetCheckVerticle extends AbstractVerticle {
 
         if (configNetCheck.hostList() != null && !configNetCheck.hostList().isEmpty()) {
 
-//            HttpClientOptions options = new HttpClientOptions()
-//                .setKeepAlive(false)
-//                .setLogActivity(true);
-//            PoolOptions poolOptions = new PoolOptions().setHttp1MaxSize(10);
-//            HttpClient client2 = vertx.createHttpClient(options, poolOptions);
-
             List<Future<?>> listeFuture = new ArrayList<>();
             for (Host host : configNetCheck.hostList()) {
-
-//                HttpClientOptions options = new HttpClientOptions()
-//                    .setKeepAlive(false)
-//                    .setLogActivity(true);
-//                PoolOptions poolOptions = new PoolOptions().setHttp1MaxSize(10);
-//                HttpClient client2 = vertx.createHttpClient(options, poolOptions);
 
                 final var hostname = host.host() + ":" + host.port();
                 LOGGER.atInfo().addKeyValue("code", code).log("appel {} {} ...", code, hostname);
@@ -202,6 +181,8 @@ public class NetCheckVerticle extends AbstractVerticle {
                     LOGGER.atError().addKeyValue("code", code).log("HTTP request error !", x);
                 });
 
+        } else {
+            LOGGER.atInfo().log("no host found");
         }
 
 
