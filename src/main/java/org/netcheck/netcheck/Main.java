@@ -1,6 +1,7 @@
 package org.netcheck.netcheck;
 
 import io.vertx.core.Vertx;
+import org.netcheck.netcheck.config.ConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

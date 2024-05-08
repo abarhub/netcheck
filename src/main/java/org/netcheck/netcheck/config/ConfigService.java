@@ -1,4 +1,4 @@
-package org.netcheck.netcheck;
+package org.netcheck.netcheck.config;
 
 import java.io.IOException;
 import java.nio.file.Files;
