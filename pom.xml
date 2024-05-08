@@ -20,7 +20,8 @@
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
 
         <main.verticle>org.netcheck.netcheck.MainVerticle</main.verticle>
-        <launcher.class>io.vertx.core.Launcher</launcher.class>
+<!--        <launcher.class>io.vertx.core.Launcher</launcher.class>-->
+        <launcher.class>org.netcheck.netcheck.Main</launcher.class>
     </properties>
 
     <dependencyManagement>
@@ -115,7 +116,7 @@
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
                                         <Main-Class>${launcher.class}</Main-Class>
-                                        <Main-Verticle>${main.verticle}</Main-Verticle>
+<!--                                        <Main-Verticle>${main.verticle}</Main-Verticle>-->
                                     </manifestEntries>
                                 </transformer>
                                 <transformer
